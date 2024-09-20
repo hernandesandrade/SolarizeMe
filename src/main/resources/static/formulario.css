@@ -8,7 +8,84 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
-    padding: 20px;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px 20px;
+    background-color: #1a1a1a;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 90px;
+}
+
+header #logo {
+    margin-bottom: auto;
+}
+
+header #logo img {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+header nav {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+}
+
+header nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul li {
+    position: relative;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #1e90ff;
+    padding: 10px 20px;
+    background-color: #1a1a1a;
+    box-shadow: 0 2px 3px rgba(255, 255, 255, 0.25);
+    transition: all 0.3s ease;
+    display: block;
+}
+
+header nav ul li a:hover {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    box-shadow: 1px 0 5px rgba(255, 255, 255, 0.7), -1px 0 5px rgba(255, 255, 255, 0.7);
+    padding: 10px 20px;
+    margin: 0 5px;
+}
+
+.menu-btn {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fff;
+    background: none;
+    border: none;
 }
 
 .form-container {
@@ -21,6 +98,7 @@ body {
 }
 
 h1 {
+    padding-top: 50px;
     text-align: center;
     margin-bottom: 20px;
 }
@@ -73,7 +151,7 @@ input, select {
     align-items: center; /* Alinha o texto e o botão */
 }
 
-button {
+#enviar {
     width: 100%;
     padding: 15px;
     background-color: #007BFF;
@@ -84,7 +162,7 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+#enviar:hover {
     background-color: #0056b3;
 }
 
@@ -102,4 +180,65 @@ button:hover {
 
 .error-message.active {
     display: block;
+}
+
+@media (max-width: 768px) {
+
+
+    header {
+        height: 0;
+        padding: 0;
+    }
+
+    header #logo {
+        display: none;
+    }
+
+    header div{
+        position: absolute;
+        right: 5px; /* Alinha a imagem ao lado direito */
+        top: 5px; /* Ajuste a posição vertical conforme necessário */
+        max-width: 100%; /* Para manter a responsividade */
+        height: auto;
+    }
+
+    header nav ul{
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 35%;
+        text-align: right;
+    }
+
+    header nav ul li a{
+        background-color: #333;
+        box-shadow: none;
+    }
+
+    header nav ul li a:hover {
+        box-shadow: none; /* Remove a sombra */
+        padding: 10px 20px;
+        margin: initial;
+        background-color: #333;
+    }
+
+    .menu-btn {
+        display: block; /* Exibe o botão do menu */
+        width: 50px;
+        height: 50px;
+        background-color: #333;
+        color: white;
+        text-align: center;
+        line-height: 50px;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 1000;
+    }
+
+    nav ul.active {
+        display: block;
+    }
+
 }

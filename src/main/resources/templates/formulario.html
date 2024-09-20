@@ -7,6 +7,20 @@
   <link rel="stylesheet" href="formulario.css">
 </head>
 <body>
+<header>
+  <div id="logo">
+    <img src="img/logo.png" alt="Logo da Empresa">
+  </div>
+  <nav>
+    <ul>
+      <li><a href="http://localhost:8080/">Home</a></li>
+      <li><a href="formulario">Orçamento</a></li>
+      <li><a href="#sobre-nos">Sobre nós</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
+  <button class="menu-btn">☰</button>
+</header>
 <div class="form-container">
   <h1>Formulário para Orçamento</h1>
   <form>
@@ -120,9 +134,25 @@
       </div>
     </fieldset>
 
-    <button type="submit">Enviar</button>
+    <button id="enviar" type="submit">Enviar</button>
   </form>
 </div>
+<script>
+  const menuBtn = document.querySelector('.menu-btn');
+  const nav = document.querySelector('nav ul');
+  document.addEventListener('DOMContentLoaded', () => {
+
+    menuBtn.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+  });
+  document.addEventListener('click', (event) => {
+    if (!nav.contains(event.target) && !menuBtn.contains(event.target)) {
+      nav.classList.remove('active');
+    }
+  });
+
+</script>
 <script>
   function mostrarErro(mensagem) {
     const cepInput = document.getElementById('cep');
