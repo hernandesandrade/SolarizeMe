@@ -53,7 +53,7 @@
 
 <!-- Vídeo Explicativo -->
 <section id="video-explicativo">
-    <h2>Benefícios de Energia Solar</h2>
+    <h2>Benefícios da Energia Solar</h2>
     <p>Assista ao vídeo explicativo para entender os benefícios e o processo de instalação do nosso sistema solar.</p>
     <iframe width="50%" height="400" src="https://www.youtube.com/embed/Cmr9Zmkp-k4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </section>
@@ -89,14 +89,20 @@
     </div>
 </footer>
 <script>
+    const menuBtn = document.querySelector('.menu-btn');
+    const nav = document.querySelector('nav ul');
     document.addEventListener('DOMContentLoaded', () => {
-        const menuBtn = document.querySelector('.menu-btn');
-        const nav = document.querySelector('nav ul');
 
         menuBtn.addEventListener('click', () => {
             nav.classList.toggle('active');
         });
     });
+    document.addEventListener('click', (event) => {
+        if (!nav.contains(event.target) && !menuBtn.contains(event.target)) {
+            nav.classList.remove('active');
+        }
+    });
+
 </script>
 </body>
 </html>

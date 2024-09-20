@@ -38,16 +38,6 @@ header #logo img {
     object-fit: cover;
 }
 
-header .site-name {
-    position: absolute;
-    margin: 15px 0 0 20px;
-    font-size: 2rem;
-    background: linear-gradient(135deg, #2fe820, yellow, #00e4ed);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: bold;
-}
-
 header nav {
     width: 100%;
     position: absolute;
@@ -94,7 +84,7 @@ header nav ul li a:hover {
     cursor: pointer;
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
     color: #fff;
     background: none;
     border: none;
@@ -102,14 +92,36 @@ header nav ul li a:hover {
 
 @media (max-width: 768px) {
 
+
+    header {
+        height: 0;
+        padding: 0;
+    }
+
+    header #logo {
+        display: none;
+    }
+
+    header div{
+        position: absolute;
+        right: 5px; /* Alinha a imagem ao lado direito */
+        top: 5px; /* Ajuste a posição vertical conforme necessário */
+        max-width: 100%; /* Para manter a responsividade */
+        height: auto;
+    }
+
     header nav ul{
         display: none;
         flex-direction: column;
         position: absolute;
         top: 0;
-        right: 0;
-        width: 50%;
-        text-align: left;
+        left: 0;
+        width: 35%;
+        text-align: right;
+    }
+
+    header nav ul li a{
+        background-color: #333;
     }
 
     .menu-btn {
@@ -212,25 +224,48 @@ header nav ul li a:hover {
 }
 
 /* Como Funciona Section */
+/* Como Funciona Section */
 #como-funciona {
-    padding: 50px 0;
+    padding: 50px 20px; /* Adiciona padding nas laterais */
     background-color: #f9f9f9;
 }
 
 #como-funciona h2 {
     text-align: center;
+    font-size: 2.5rem; /* Aumenta o tamanho da fonte */
+    margin-bottom: 40px; /* Espaçamento abaixo do título */
+    color: #333; /* Cor do texto */
 }
 
-#como-funciona div {
+#como-funciona > div {
     display: flex;
     justify-content: space-around;
+    align-items: center; /* Alinha verticalmente */
+    flex-wrap: wrap; /* Permite que os itens se movam para uma nova linha em telas pequenas */
+}
+
+#como-funciona > div > div {
+    flex: 1 1 200px; /* Faz com que cada item ocupe um espaço flexível */
+    max-width: 250px; /* Limita a largura máxima dos itens */
     text-align: center;
-    margin-top: 30px;
+    margin: 20px; /* Espaçamento entre os itens */
+    padding: 20px; /* Adiciona padding interno */
+    border-radius: 8px; /* Arredonda os cantos */
+    background-color: #fff; /* Fundo branco para destaque */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transições suaves */
+}
+
+#como-funciona > div > div:hover {
+    transform: translateY(-5px); /* Levanta o item ao passar o mouse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Aumenta a sombra ao passar o mouse */
 }
 
 #como-funciona img {
-    width: 50px;
+    width: 60px; /* Aumenta a largura da imagem */
+    margin-bottom: 10px; /* Espaçamento abaixo da imagem */
 }
+
 
 /* Footer */
 footer {
