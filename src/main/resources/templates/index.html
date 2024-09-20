@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Descubra como economizar com energia solar. Instalação rápida e eficiente. Solicite seu orçamento agora!">
+    <title>SolarizeMe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Cabeçalho -->
+<header>
+    <div id="logo">
+        <img src="img/logo.png" alt="Logo da Empresa">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#orcamento">Orçamento</a></li>
+            <li><a href="#sobre-nos">Sobre nós</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
+    <button class="menu-btn">☰</button>
+</header>
+
+<!-- Banner Principal -->
+<section id="hero">
+    <h1>Economize com Energia Solar!</h1>
+    <p>Instalação rápida e eficiente.</p>
+    <a href="#orcamento">Solicitar Orçamento Agora</a>
+    <p>Descubra o quanto você pode economizar com nosso simulador de consumo.</p>
+</section>
+
+<!-- Sessão de Benefícios -->
+<section id="beneficios">
+    <div>
+        <img src="img/icon-reducao-custos.png" alt="Ícone Redução de Custos">
+        <h3>Redução de Custos</h3>
+        <p>Economize até 95% na sua conta de energia.</p>
+    </div>
+    <div>
+        <img src="img/icon-energia-limpa.png" alt="Ícone Energia Limpa">
+        <h3>Energia Limpa e Sustentável</h3>
+        <p>Contribua para um planeta mais verde com energia renovável.</p>
+    </div>
+    <div>
+        <img src="img/icon-valorizacao-imovel.png" alt="Ícone Valorização do Imóvel">
+        <h3>Valorização do Imóvel</h3>
+        <p>Seu imóvel se valoriza ao ter energia solar instalada.</p>
+    </div>
+</section>
+
+<!-- Vídeo Explicativo -->
+<section id="video-explicativo">
+    <h2>Benefícios de Energia Solar</h2>
+    <p>Assista ao vídeo explicativo para entender os benefícios e o processo de instalação do nosso sistema solar.</p>
+    <iframe width="50%" height="400" src="https://www.youtube.com/embed/Cmr9Zmkp-k4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</section>
+
+<!-- Sessão "Como Funciona" -->
+<section id="como-funciona">
+    <h2>Como Funciona Nossos Serviços?</h2>
+    <div>
+        <div>
+            <img src="img/icon-solicitar-orcamento.png" alt="Solicite um Orçamento">
+            <p>Solicite um Orçamento</p>
+        </div>
+        <div>
+            <img src="img/icon-analise-estimativa.jpg" alt="Receba a Análise">
+            <p>Receba a Análise e Estimativa</p>
+        </div>
+        <div>
+            <img src="img/icon-comece-economizar.png" alt="Comece a Economizar">
+            <p>Comece a Economizar</p>
+        </div>
+    </div>
+</section>
+
+<!-- Rodapé -->
+<footer>
+    <div>
+        <p>&copy; 2024 EnergizeMe. Todos os direitos reservados.</p>
+        <p>
+            <a href="#sobre-nos">Quem somos</a> |
+            <a href="#">Termos de Serviço</a> |
+            <a href="#contato">Contato</a>
+        </p>
+    </div>
+</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuBtn = document.querySelector('.menu-btn');
+        const nav = document.querySelector('nav ul');
+
+        menuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+    });
+</script>
+</body>
+</html>
