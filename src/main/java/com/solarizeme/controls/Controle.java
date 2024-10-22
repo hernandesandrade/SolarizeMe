@@ -15,9 +15,8 @@ public class Controle {
     public EmailSenderService senderService;
 
     @GetMapping("/formulario")
-    public ModelAndView formulario() {
-        ModelAndView mv = new ModelAndView("formulario");
-        return mv;
+    public String formulario() {
+        return "formulario";
     }
 
 
