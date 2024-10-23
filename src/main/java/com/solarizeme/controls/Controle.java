@@ -1,12 +1,19 @@
 package com.solarizeme.controls;
 
+import com.itextpdf.io.source.ByteArrayOutputStream;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
 import com.solarizeme.EmailSenderService;
-import com.solarizeme.modelo.Email;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.io.IOException;
 
 @Controller
 public class Controle {
@@ -18,6 +25,58 @@ public class Controle {
     public String formulario() {
         return "formulario";
     }
+
+    @PostMapping("/gerar-orcamento")
+    public void gerarOrcamento(
+            @RequestParam("nome") String nome,
+            @RequestParam("endereco") String endereco,
+            @RequestParam("telefone") String telefone,
+            @RequestParam("email") String email,
+            @RequestParam("tipo-imovel") String tipoImovel,
+            @RequestParam("tamanho-residencia") String tamanhoResidencia,
+            @RequestParam("tipo-telhado") String tipoTelhado,
+            @RequestParam("telhado-condicao") String telhadoCondicao,
+            @RequestParam("inclinacao-telhado") String inclinacaoTelhado,
+            @RequestParam("consumo-energia") String consumoEnergia,
+            HttpServletResponse response) throws IOException {
+
+        // Defina o tipo de conteúdo para PDF
+        response.setContentType("application/pdf");
+        response.setHeader("Content-Disposition", "attachment; filename=orcamento.pdf");
+
+        // Criação do ByteArrayOutputStream
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+
+        // Criação do PdfWriter
+        PdfWriter writer = new PdfWriter(out);
+
+        // Criação do PdfDocument
+        PdfDocument pdfDocument = new PdfDocument(writer);
+
+        // Criação do Document
+        Document document = new Document(pdfDocument);
+
+        // Adicionando os dados do formulário no PDF
+        document.add(new Paragraph("Orçamento SolarizeMe"));
+        document.add(new Paragraph("Nome: " + nome));
+        document.add(new Paragraph("Endereço: " + endereco));
+        document.add(new Paragraph("Telefone: " + telefone));
+        document.add(new Paragraph("Email: " + email));
+        document.add(new Paragraph("Tipo de Imóvel: " + tipoImovel));
+        document.add(new Paragraph("Tamanho da Residência: " + tamanhoResidencia));
+        document.add(new Paragraph("Tipo de Telhado: " + tipoTelhado));
+        document.add(new Paragraph("Condição do Telhado: " + telhadoCondicao));
+        document.add(new Paragraph("Inclinação do Telhado: " + inclinacaoTelhado));
+        document.add(new Paragraph("Consumo de Energia: " + consumoEnergia));
+
+        // Fechar o documento
+        document.close();
+
+        // Enviar o PDF gerado ao navegador para download
+        response.getOutputStream().write(out.toByteArray());
+        response.getOutputStream().flush();
+    }
+
 
 
 

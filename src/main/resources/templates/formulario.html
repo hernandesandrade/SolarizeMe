@@ -21,199 +21,163 @@
   </nav>
   <button class="menu-btn">☰</button>
 </header>
+
 <div class="form-container">
   <h1>Formulário para Orçamento</h1>
-  <form>
+  <form method="post" action="/gerar-orcamento">
+    <!-- Informações Pessoais -->
     <fieldset>
-      <legend>Informações Pessoais e de Contato</legend>
+      <legend>Informações Pessoais</legend>
 
       <div class="form-group">
         <label for="nome">Nome Completo:</label>
         <input type="text" id="nome" name="nome" required>
       </div>
 
-      <div class="form-row">
-        <div class="form-group">
-          <label for="cpf">CPF ou CNPJ:</label>
-          <input type="text" id="cpf" name="cpf" required>
-        </div>
-
-        <div class="form-group">
-          <label for="cep">CEP:</label>
-          <input type="text" id="cep" name="cep" onblur="buscarEndereco()" placeholder="Digite o CEP" required>
-          <p id="cep-error" class="error-message"></p>
-        </div>
+      <div class="form-group">
+        <label for="endereco">Endereço Completo (Rua, Bairro, Cidade, Estado):</label>
+        <input type="text" id="endereco" name="endereco" required>
       </div>
 
-      <div class="form-row">
-        <div class="form-group">
-          <label for="rua">Rua:</label>
-          <input type="text" id="rua" name="rua" required readonly>
-        </div>
-
-        <div class="form-group">
-          <label for="bairro">Bairro:</label>
-          <input type="text" id="bairro" name="bairro" required readonly>
-        </div>
+      <div class="form-group">
+        <label for="telefone">Telefone para Contato:</label>
+        <input type="tel" id="telefone" name="telefone" required>
       </div>
 
-      <div class="form-row">
-        <div class="form-group">
-          <label for="cidade">Cidade:</label>
-          <input type="text" id="cidade" name="cidade" required readonly>
-        </div>
-
-        <div class="form-group">
-          <label for="estado">Estado:</label>
-          <input type="text" id="estado" name="estado" required readonly>
-        </div>
+      <div class="form-group">
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
       </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label for="numero">Número:</label>
-          <input type="text" id="numero" name="numero" required>
-        </div>
-
-        <div class="form-group">
-          <label for="complemento">Complemento:</label>
-          <input type="text" id="complemento" name="complemento">
-        </div>
-      </div>
-
     </fieldset>
+
+    <!-- Informações da Residência -->
     <fieldset>
-      <legend>Informações sobre a Instalação</legend>
+      <legend>Informações da Residência</legend>
 
       <div class="form-group">
-        <label for="tipo-rede">Tipo de Rede Elétrica:</label>
-        <select id="tipo-rede" name="tipo-rede" required>
-          <option value="monofasica">Monofásica</option>
-          <option value="bifasica">Bifásica</option>
-          <option value="trifasica">Trifásica</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="tipo-instalacao">Tipo de Instalação:</label>
-        <select id="tipo-instalacao" name="tipo-instalacao" required>
-          <option value="residencial">Residencial</option>
-          <option value="industrial">Industrial</option>
-          <option value="rural">Rural</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="consumo-energia">Consumo de Energia nos Últimos 12 Meses (kWh):</label>
-        <input type="number" id="consumo-energia" name="consumo-energia" required>
-      </div>
-
-      <div class="form-group">
-        <label for="area-disponivel">Área Disponível para Instalação (m²):</label>
-        <input type="number" id="area-disponivel" name="area-disponivel" required>
-      </div>
-
-      <div class="form-group">
-        <label for="material-telhado">Material do Telhado:</label>
-        <select id="material-telhado" name="material-telhado" required>
-          <option value="plastica">Telha Plástica</option>
-          <option value="ceramica">Telha Cerâmica</option>
-          <option value="metalica">Telha Metálica</option>
-          <option value="vidro">Telha de Vidro</option>
-          <option value="fibrocimento">Telha de Fibrocimento</option>
-          <option value="outra">Outro</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label>Deseja um inversor com capacidade de expansão futura?</label>
+        <label>Tipo de Imóvel:</label>
         <div class="radio-group">
-          <label><input type="radio" name="inversor-expansao" value="sim" required> Sim</label>
-          <label><input type="radio" name="inversor-expansao" value="nao"> Não</label>
+          <label><input type="radio" name="tipo-imovel" value="casa" required> Casa</label>
+          <label><input type="radio" name="tipo-imovel" value="apartamento"> Apartamento</label>
+          <label><input type="radio" name="tipo-imovel" value="comercial"> Comercial</label>
+          <label><input type="radio" name="tipo-imovel" value="outro"> Outro</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Tamanho da residência (em metros quadrados):</label>
+        <div class="radio-group">
+          <label><input type="radio" name="tamanho-residencia" value="menos100" required> Menos de 100 m²</label>
+          <label><input type="radio" name="tamanho-residencia" value="100-200"> 100 a 200 m²</label>
+          <label><input type="radio" name="tamanho-residencia" value="200-300"> 200 a 300 m²</label>
+          <label><input type="radio" name="tamanho-residencia" value="mais300"> Mais de 300 m²</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Tipo de telhado:</label>
+        <div class="radio-group">
+          <label><input type="radio" name="tipo-telhado" value="ceramica" required> Cerâmica</label>
+          <label><input type="radio" name="tipo-telhado" value="fibrocimento"> Fibrocimento</label>
+          <label><input type="radio" name="tipo-telhado" value="metalico"> Metálico</label>
+          <label><input type="radio" name="tipo-telhado" value="outro"> Outro</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>O telhado está em boas condições?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="telhado-condicao" value="sim" required> Sim</label>
+          <label><input type="radio" name="telhado-condicao" value="nao"> Não</label>
+          <label><input type="radio" name="telhado-condicao" value="nao-sei"> Não sei</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Qual a inclinação do telhado?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="inclinacao-telhado" value="plano" required> Plano</label>
+          <label><input type="radio" name="inclinacao-telhado" value="leve"> Leve</label>
+          <label><input type="radio" name="inclinacao-telhado" value="inclinado"> Inclinado</label>
+          <label><input type="radio" name="inclinacao-telhado" value="muito-inclinado"> Muito Inclinado</label>
         </div>
       </div>
     </fieldset>
 
-    <button id="enviar" type="submit">Enviar</button>
+    <!-- Consumo de Energia -->
+    <fieldset>
+      <legend>Consumo de Energia</legend>
+
+      <div class="form-group">
+        <label>Qual o consumo médio mensal de energia elétrica (em kWh)?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="consumo-energia" value="menos200" required> Menos de 200 kWh</label>
+          <label><input type="radio" name="consumo-energia" value="200-400"> 200 a 400 kWh</label>
+          <label><input type="radio" name="consumo-energia" value="400-600"> 400 a 600 kWh</label>
+          <label><input type="radio" name="consumo-energia" value="mais600"> Mais de 600 kWh</label>
+          <label><input type="radio" name="consumo-energia" value="nao-sei"> Não sei</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>A conta de luz inclui o consumo de quais aparelhos? (Marque todos que se aplicam)</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="aparelhos" value="ar-condicionado"> Ar-condicionado</label>
+          <label><input type="checkbox" name="aparelhos" value="aquecedor"> Aquecedor</label>
+          <label><input type="checkbox" name="aparelhos" value="geladeira"> Geladeira</label>
+          <label><input type="checkbox" name="aparelhos" value="freezer"> Freezer</label>
+          <label><input type="checkbox" name="aparelhos" value="maquina-lavar"> Máquina de lavar roupas</label>
+          <label><input type="checkbox" name="aparelhos" value="microondas"> Micro-ondas</label>
+          <label><input type="checkbox" name="aparelhos" value="televisao"> Televisão</label>
+          <label><input type="checkbox" name="aparelhos" value="computador"> Computador</label>
+          <label><input type="checkbox" name="aparelhos" value="chuveiro"> Chuveiro elétrico</label>
+          <label><input type="checkbox" name="aparelhos" value="outro"> Outros</label>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- Preferências de Instalação -->
+    <fieldset>
+      <legend>Preferências de Instalação</legend>
+
+      <div class="form-group">
+        <label>Você tem interesse em financiamento ou pagamento parcelado?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="financiamento" value="sim" required> Sim</label>
+          <label><input type="radio" name="financiamento" value="nao"> Não</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Gostaria de incluir sistemas de bateria para armazenamento de energia?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="bateria" value="sim" required> Sim</label>
+          <label><input type="radio" name="bateria" value="nao"> Não</label>
+          <label><input type="radio" name="bateria" value="nao-sei"> Não sei</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Qual é o principal motivo para instalar placas solares?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="motivo" value="reducao" required> Redução na conta de energia</label>
+          <label><input type="radio" name="motivo" value="sustentabilidade"> Sustentabilidade</label>
+          <label><input type="radio" name="motivo" value="valorizacao"> Valorização do imóvel</label>
+          <label><input type="radio" name="motivo" value="outro"> Outro</label>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- Envio do Formulário -->
+    <div class="form-group">
+      <button type="submit">Enviar Formulário</button>
+    </div>
   </form>
 </div>
-<script>
-  const menuBtn = document.querySelector('.menu-btn');
-  const nav = document.querySelector('nav ul');
-  document.addEventListener('DOMContentLoaded', () => {
 
-    menuBtn.addEventListener('click', () => {
-      nav.classList.toggle('active');
-    });
-  });
-  document.addEventListener('click', (event) => {
-    if (!nav.contains(event.target) && !menuBtn.contains(event.target)) {
-      nav.classList.remove('active');
-    }
-  });
+<footer>
+  <p>&copy; 2024 SolarizeMe. Todos os direitos reservados.</p>
+</footer>
 
-</script>
-<script>
-  function mostrarErro(mensagem) {
-    const cepInput = document.getElementById('cep');
-    const erroMensagem = document.getElementById('cep-error');
-
-    cepInput.classList.add('error');
-    erroMensagem.textContent = mensagem;
-    erroMensagem.classList.add('active');
-  }
-
-  function limparErro() {
-    const cepInput = document.getElementById('cep');
-    const erroMensagem = document.getElementById('cep-error');
-
-    cepInput.classList.remove('error');
-    erroMensagem.classList.remove('active');
-  }
-
-  function buscarEndereco() {
-    const cep = document.getElementById('cep').value.replace(/\D/g, '');
-    limparErro();
-
-    if (cep !== "") {
-      const validacep = /^[0-9]{8}$/;
-
-      if(validacep.test(cep)) {
-        fetch(`https://viacep.com.br/ws/${cep}/json/`)
-                .then(response => response.json())
-                .then(data => {
-                  if (!("erro" in data)) {
-                    document.getElementById('rua').value = data.logradouro;
-                    document.getElementById('bairro').value = data.bairro;
-                    document.getElementById('cidade').value = data.localidade;
-                    document.getElementById('estado').value = data.uf;
-                  } else {
-                    mostrarErro("CEP não encontrado.");
-                  }
-                })
-                .catch(() => {
-                  mostrarErro("Erro ao buscar o CEP.");
-                });
-      } else {
-        mostrarErro("Formato de CEP inválido.");
-      }
-    }
-  }
-
-  function aplicarMascaraCEP(cep) {
-    cep = cep.replace(/\D/g, ""); // Remove tudo que não é dígito
-    cep = cep.replace(/^(\d{5})(\d)/, "$1-$2"); // Formata como 00000-000
-    return cep;
-  }
-
-  document.getElementById('cep').addEventListener('input', function(e) {
-    e.target.value = aplicarMascaraCEP(e.target.value);
-
-    // Limita o comprimento a 9 caracteres (incluindo o hífen)
-    if (e.target.value.length > 9) {
-      e.target.value = e.target.value.slice(0, 9);
-    }
-  });
-</script>
 </body>
 </html>
